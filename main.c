@@ -1,0 +1,27 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "list.h"
+
+int main(){
+  struct node *p; //empty
+  printf("made an empty list, here is how it looks: \n");
+  print_list(p);
+  //
+  printf("now going to add numbers 12 to 18: \n");
+  int i;
+  //shouldn't reassign p everytime, then you'll lose it. so make a new placeholder POINTER
+  //actually, just need pointer to front. so no need for iterator
+  struct node *iterator = p;
+  for (i = 12; i<19; i++){
+    printf("adding %d\n", i);
+    iterator = insert_front(iterator, i);
+  }
+  //print list again
+  printf("printing list again, should look like: [18, 17, 16, 15, 14, 13, 12]: ");
+  print_list(iterator);
+  //now free the list and reprint
+  printf("freeing the list, then will reprint: ");
+  free_list(iterator);
+  print_list(iterator);
+  return 0;
+}
