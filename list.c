@@ -4,12 +4,12 @@
 //NOTE: BASE NODE SHOULD HAVE POINTER POINTING TO NULL
 //Should take a pointer to a node struct and print out all of the data in the list
 void print_list(struct node *pointer){
-  if (pointer == 0){ //if it's an empty list
-    printf("[]");
+  if (pointer == NULL){ //if it's an empty list
+    printf("[]\n");
   }else{
     printf("[%d", pointer->data); //print the first value. But if the list is empty, just print "[]"
     pointer = pointer->next; //set the current node to be the next
-    while(pointer != 0){
+    while(pointer != NULL){
       printf(", %d", pointer->data);
       pointer = pointer->next;
     }
@@ -33,7 +33,7 @@ Should take a pointer to a list as a parameter and then go through the entire li
 freeing each node and return a pointer to the beginning of the list (which should be NULL by then).
 */
 struct node * free_list(struct node *pointer){
-  while (pointer->next != 0){ //while there is a node next to it
+  while (pointer->next != NULL){ //while there is a node next to it
     free_list(pointer->next); //go to the next node to free it
   }
   //base case

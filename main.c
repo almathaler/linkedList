@@ -3,7 +3,7 @@
 #include "list.h"
 
 int main(){
-  struct node *p; //empty
+  struct node *p = NULL; //empty
   printf("made an empty list, here is how it looks: \n");
   print_list(p);
   //
