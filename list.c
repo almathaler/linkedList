@@ -44,3 +44,24 @@ struct node * free_list(struct node *pointer){
   }
   return pointer;
 }
+/*
+Remove the node containing data from the list pointed to by front.
+If data is not in the list, nothing is changed.
+Returns a pointer to the beginning of the list.
+*/
+struct node * remove(struct node *front, int data){
+  //go thru list to find data, keep previous node in a POINTER/
+  //once you find the first instance of data, assign previous node.next = this.next
+  //then free current POINTER
+  //return front, which should be untouched
+  struct node *iterator = front;
+  while (iterator->next != NULL){
+    if ((iterator->next)->data == data){
+      (iterator->next) = (iterator->next)->next;
+      free(iterator->next);
+    }else{
+      iterator = iterator->next;
+    }
+  }
+  return front;
+}
