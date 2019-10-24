@@ -29,8 +29,8 @@ struct node * insert_front(struct node *pointer, int data){
   first = malloc(sizeof(struct node)); //make a space for this new node
   first->data = data; //fill up this new node
   first->next = pointer;
-  printf("added this node: ");
-  printNode(first);
+  //printf("added this node: ");
+  //printNode(first);
   return first; //return node
 }
 /*
@@ -40,16 +40,16 @@ freeing each node and return a pointer to the beginning of the list (which shoul
 struct node * free_list(struct node *pointer){
   //base case
   if (pointer->next == NULL){
-    printf("freeing base: ");
-    printNode(pointer);
+    //printf("freeing base: ");
+    //printNode(pointer);
     free(pointer); //empty this space
     pointer = NULL;
   }else{
-    printf("not yet at bottom, am here: ");
-    printNode(pointer);
+    //printf("not yet at bottom, am here: ");
+    //printNode(pointer);
     free_list(pointer->next); //go to the next node to free it
-    printf("freeing: ");
-    printNode(pointer);
+    //printf("freeing: ");
+    //printNode(pointer);
     free(pointer);
     pointer = NULL;
   }
@@ -69,14 +69,14 @@ struct node * listRemove(struct node *front, int data){
   struct node *behindIterator;
   while(iterator != NULL){
     if(iterator->data == data){
-      printf("found data! removing at ");
-      printNode(iterator);
+      //printf("found data! removing at ");
+      //printNode(iterator);
       behindIterator->next = iterator->next;
       free(iterator);
       iterator = NULL; //so the while loop stops
-      printf("now the surrounding pointers look like: ");
-      printNode(behindIterator);
-      printNode(behindIterator->next);
+      //printf("now the surrounding pointers look like: ");
+      //printNode(behindIterator);
+      //printNode(behindIterator->next);
     }else{
       behindIterator = iterator;
       iterator = iterator->next;
