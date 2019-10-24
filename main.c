@@ -19,6 +19,11 @@ int main(){
   //print list again
   printf("printing list again, should look like: [18, 17, 16, 15, 14, 13, 12]: \n");
   print_list(iterator);
+  //now remove the number 16 and print
+  printf("now going to remove 16\n");
+  iterator = listRemove(iterator, 16);
+  printf("just removed 16, reprinting: \n");
+  print_list(iterator);
   //now free the list and reprint
   printf("freeing the list, then will reprint: \n");
   iterator = free_list(iterator);

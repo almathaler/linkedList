@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "list.h"
+void printNode(struct node *pointer){
+  printf("{at: %p, next: %p, data: %d}\n", pointer, pointer->next, pointer->data);
+}
 //NOTE: BASE NODE SHOULD HAVE POINTER POINTING TO NULL
 //Should take a pointer to a node struct and print out all of the data in the list
 void print_list(struct node *pointer){
@@ -26,6 +29,8 @@ struct node * insert_front(struct node *pointer, int data){
   first = malloc(sizeof(struct node)); //make a space for this new node
   first->data = data; //fill up this new node
   first->next = pointer;
+  printf("added this node: ");
+  printNode(first);
   return first; //return node
 }
 /*
@@ -35,10 +40,16 @@ freeing each node and return a pointer to the beginning of the list (which shoul
 struct node * free_list(struct node *pointer){
   //base case
   if (pointer->next == NULL){
+    printf("freeing base: ");
+    printNode(pointer);
     free(pointer); //empty this space
     pointer = NULL;
   }else{
+    printf("not yet at bottom, am here: ");
+    printNode(pointer);
     free_list(pointer->next); //go to the next node to free it
+    printf("freeing: ");
+    printNode(pointer);
     free(pointer);
     pointer = NULL;
   }
@@ -49,17 +60,25 @@ Remove the node containing data from the list pointed to by front.
 If data is not in the list, nothing is changed.
 Returns a pointer to the beginning of the list.
 */
-struct node * remove(struct node *front, int data){
+struct node * listRemove(struct node *front, int data){
   //go thru list to find data, keep previous node in a POINTER/
   //once you find the first instance of data, assign previous node.next = this.next
   //then free current POINTER
   //return front, which should be untouched
   struct node *iterator = front;
-  while (iterator->next != NULL){
-    if ((iterator->next)->data == data){
-      (iterator->next) = (iterator->next)->next;
-      free(iterator->next);
+  struct node *behindIterator;
+  while(iterator != NULL){
+    if(iterator->data == data){
+      printf("found data! removing at ");
+      printNode(iterator);
+      behindIterator->next = iterator->next;
+      free(iterator);
+      iterator = NULL; //so the while loop stops
+      printf("now the surrounding pointers look like: ");
+      printNode(behindIterator);
+      printNode(behindIterator->next);
     }else{
+      behindIterator = iterator;
       iterator = iterator->next;
     }
   }
