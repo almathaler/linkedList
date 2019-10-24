@@ -15,7 +15,6 @@ void print_list(struct node *pointer){
     }
     printf("]\n");
   }
-  printf("!finished printing\n\n");
 }
 /*
 Should take a pointer to the existing list and the data to be added, create a new node and put it at the beginning of the list.
@@ -34,12 +33,21 @@ Should take a pointer to a list as a parameter and then go through the entire li
 freeing each node and return a pointer to the beginning of the list (which should be NULL by then).
 */
 struct node * free_list(struct node *pointer){
-  while (pointer->next != NULL){ //while there is a node next to it
+  //base case
+  if (pointer->next == NULL){
+    printf("freeing %p\n", &pointer);
+    free(pointer); //empty this space
+    printf("making %p null\n", &pointer);
+    pointer = NULL;
+    printf("pointer: %p\n", pointer);
+  }else{
     printf("not yet going to free: %p\n", &pointer);
     free_list(pointer->next); //go to the next node to free it
+    printf("freeing %p\n", &pointer);
+    free(pointer);
+    printf("making %p null\n", &pointer);
+    pointer = NULL;
+    printf("pointer: %p\n", pointer);
   }
-  //base case
-  printf("freeing %p\n", &pointer);
-  free(pointer); //empty this space
   return pointer;
 }
