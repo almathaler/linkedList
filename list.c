@@ -35,19 +35,12 @@ freeing each node and return a pointer to the beginning of the list (which shoul
 struct node * free_list(struct node *pointer){
   //base case
   if (pointer->next == NULL){
-    printf("freeing %p\n", &pointer);
     free(pointer); //empty this space
-    printf("making %p null\n", &pointer);
     pointer = NULL;
-    printf("pointer: %p\n", pointer);
   }else{
-    printf("not yet going to free: %p\n", &pointer);
     free_list(pointer->next); //go to the next node to free it
-    printf("freeing %p\n", &pointer);
     free(pointer);
-    printf("making %p null\n", &pointer);
     pointer = NULL;
-    printf("pointer: %p\n", pointer);
   }
   return pointer;
 }

@@ -22,8 +22,6 @@ int main(){
   //now free the list and reprint
   printf("freeing the list, then will reprint: \n");
   iterator = free_list(iterator);
-  printf("done freeing\n");
-  printf("iterator now: %p\n", iterator);
   print_list(iterator);
   return 0;
 }
