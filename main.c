@@ -17,10 +17,10 @@ int main(){
     iterator = insert_front(iterator, i);
   }
   //print list again
-  printf("printing list again, should look like: [18, 17, 16, 15, 14, 13, 12]: ");
+  printf("printing list again, should look like: [18, 17, 16, 15, 14, 13, 12]: \n");
   print_list(iterator);
   //now free the list and reprint
-  printf("freeing the list, then will reprint: ");
+  printf("freeing the list, then will reprint: \n");
   free_list(iterator);
   print_list(iterator);
   return 0;
