@@ -24,6 +24,10 @@ int main(){
   iterator = listRemove(iterator, 16);
   printf("just removed 16, reprinting: \n");
   print_list(iterator);
+  printf("going to try removng 10:\n");
+  iterator = listRemove(iterator, 10);
+  printf("'removed' 10, reprinting:\n");
+  print_list(iterator);
   //now free the list and reprint
   printf("freeing the list, then will reprint: \n");
   iterator = free_list(iterator);

@@ -1,5 +1,5 @@
-#ifndef list_h
-#define list_h
+//#ifndef list_h
+//#define list_h
 //nodes
 struct node{ int data;
              struct node *next;
@@ -14,4 +14,4 @@ struct node * free_list(struct node *pointer);
 struct node * listRemove(struct node *front, int data);
 //print one node
 void printNode(struct node *pointer);
-#endif
+//#endif
