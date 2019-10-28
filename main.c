@@ -32,5 +32,20 @@ int main(){
   printf("freeing the list, then will reprint: \n");
   iterator = free_list(iterator);
   print_list(iterator);
+  printf("going to try rebuilding list w same pointer:\n");
+  for (i = 20; i<27; i++){
+    printf("adding %d\n", i);
+    iterator = insert_front(iterator, i);
+  }
+  printf("the list now: ");
+  print_list(iterator);
+  printf("removing 20:\n");
+  iterator = listRemove(iterator, 20);
+  print_list(iterator);
+  printf("removing 26:\n");
+  iterator = listRemove(iterator, 26);
+  print_list(iterator);
+  printf("freeing all\n");
+  iterator=free_list(iterator);
   return 0;
 }

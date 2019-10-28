@@ -66,14 +66,18 @@ struct node * listRemove(struct node *front, int data){
   //then free current POINTER
   //return front, which should be untouched
   struct node *iterator = front;
-  struct node *behindIterator;
+  struct node *behindIterator = NULL;
   while(iterator != NULL){
     if(iterator->data == data){
       //printf("found data! removing at ");
       //printNode(iterator);
-      behindIterator->next = iterator->next;
+      if (behindIterator == NULL){
+        front = iterator->next; //if you're removing the first piece, there's no back. so  just skip over this
+      }else{
+        behindIterator->next = iterator->next;
+      }
       free(iterator);
-      iterator = NULL; //so the while loop stops
+      iterator=NULL;
       //printf("now the surrounding pointers look like: ");
       //printNode(behindIterator);
       //printNode(behindIterator->next);
